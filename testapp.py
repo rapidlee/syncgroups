@@ -5,15 +5,20 @@ with open('open_grok.txt', 'r') as f:
     print(f'The filename you are searching from is: {f.name}')
     file_contents = f.read()
     
-# Test input for @yelp domain, if not then add the @yelp domain to the input
+# Test input for @yelp domain or @ sign, if not then add the @yelp domain to the input
 def test_domain_input(original_input):
-    clean_input = original_input.strip()
+    stripped_input = original_input.strip()
+    lowercased_input = stripped_input.lower()
+    clean_input = lowercased_input
     if re.search(r'\@yelp.com', clean_input):
+        return clean_input
+    elif clean_input.endswith('@'):
+        clean_input += 'yelp.com'
         return clean_input
     else:
         # bprint('There is no @ sign')
         clean_input += '@yelp.com'
-        return clean_input  
+        return clean_input
 
 # Find the pattern in file_contents using the final_input var
 def find_pattern(final_input):
@@ -32,3 +37,5 @@ def find_pattern(final_input):
     else:
         return False
 
+hey = test_domain_input('nys-office@')
+print(hey)
