@@ -7,9 +7,7 @@ with open('open_grok.txt', 'r') as f:
     
 # Test input for @yelp domain or @ sign, if not then add the @yelp domain to the input
 def test_domain_input(original_input):
-    stripped_input = original_input.strip()
-    lowercased_input = stripped_input.lower()
-    clean_input = lowercased_input
+    clean_input = original_input.strip()
     if re.search(r'\@yelp.com', clean_input):
         return clean_input
     elif clean_input.endswith('@'):
