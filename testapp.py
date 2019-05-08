@@ -24,11 +24,11 @@ def test_domain_input(original_input):
 def find_pattern(final_input):
     list_output = []
     # If input pattern is found, split results in 2 and search 2nd group for pattern
-    if re.search(final_input, file_contents):
-        first_result = re.search(f'({final_input})(.+)', file_contents)
+    if re.search(final_input, file_contents, re.IGNORECASE):
+        first_result = re.search(f'({final_input})(.+)', file_contents, re.IGNORECASE)
         first_result_2nd_group = first_result.group(2)
         # Now that we have the 2nd group we search for =cn=g patterns and iterate it through
-        matches = re.findall(r'g-.+?,', first_result_2nd_group)
+        matches = re.findall(r'g-.+?,', first_result_2nd_group, re.IGNORECASE)
         # print(f'Below are restricted groups in AD for {final_input}:')
         for match in matches:
             list_output.append(match[:-1])
@@ -36,6 +36,3 @@ def find_pattern(final_input):
         #print(first_result.group(2))
     else:
         return False
-
-hey = test_domain_input('nys-office@')
-print(hey)
