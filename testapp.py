@@ -42,5 +42,3 @@ def find_pattern(final_input):
         return list_output
     else:
         return False
-temp = find_pattern('salesmanagers@yelp.com')
-print(temp)
