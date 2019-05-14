@@ -22,8 +22,8 @@ def test_domain_input(original_input):
 def find_pattern(final_input):
     list_output = [' ']
     # If input pattern is found, split results in 2 and search 2nd group for pattern
-    if re.search(final_input, file_contents, re.IGNORECASE):
-        first_result = re.search(f'({final_input})(.+)', file_contents, re.IGNORECASE)
+    if re.search(f'(^{final_input})', file_contents, re.IGNORECASE | re.MULTILINE):
+        first_result = re.search(f'^({final_input})(.+)', file_contents, re.IGNORECASE | re.MULTILINE)
         first_result_2nd_group = first_result.group(2)
         # Now that we have the 2nd group we search for =cn=g patterns and iterate it through
         matches = re.findall(r'g-.+?,', first_result_2nd_group, re.IGNORECASE)
@@ -42,3 +42,6 @@ def find_pattern(final_input):
         return list_output
     else:
         return False
+
+temp = find_pattern("finance@yelp.com")
+print(temp)
