@@ -18,5 +18,5 @@ def my_form_post():
     return render_template('my-form-processed.html', final_output=final_output, final_input=final_input)
 
 if __name__ == "__main__":
-      app.run(debug=True)
+      app.run(host='0.0.0.0', port=5005, debug=True)
  
