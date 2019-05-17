@@ -1,13 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
         <!-- Test if there is a value for final_input -->
-        {% if final_output %}
-        <b> {{ final_input }} </b> is a sync group <br><br><br>
-        <!-- WE are going to add something here to handle departments -->
-        Below are the restricted groups in AD: <br><br>
-        {% for items in final_output %}
-            {{ items }} <br>
-        {% endfor %}
+        {% if final_output == "nothing" %}
+            <b> {{ final_input }} </b> is a sync group<br><br><br>
+            <!-- WE are going to add something here to handle departments -->
+            Please refer to our <a href="https://sourcegraph.yelpcorp.com/ITOnboarding/-/blob/GroupSyncronization/GoogleGroups.cfg">Sourcegraph</a> for more info on restricted AD groups<br><br>
+        {% elif final_output %}
+            <b> {{ final_input }} </b> is a sync group<br><br><br>
+            <!-- WE are going to add something here to handle departments -->
+            Below are the restricted groups in AD: <br><br>
+            {% for items in final_output %}
+                {{ items }} <br>
+            {% endfor %}
         {% else %}
             {{ final_input }} is not a sync group
         {% endif %}
