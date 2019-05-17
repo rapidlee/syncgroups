@@ -26,7 +26,6 @@ def find_pattern(final_input):
         first_result_2nd_group = first_result.group(2)
         # Now that we have the 2nd group we search for =cn=g patterns and iterate it through
         matches = re.findall(r'memberof=cn=.+?,', first_result_2nd_group, re.IGNORECASE)
-        # print(f'Below are restricted groups in AD for {final_input}:')
         for match in matches:
             list_output.append(match[12:-1])
         return list_output
@@ -36,9 +35,9 @@ def find_pattern(final_input):
         first_result_2nd_group = first_result.group(2)
         # Now that we have the 2nd group we search for =cn=g patterns and iterate it through
         matches = re.findall(r'memberof=cn=.+?,', first_result_2nd_group, re.IGNORECASE)
-        # print(f'Below are restricted groups in AD for {final_input}:')
         for match in matches:
             list_output.append(match[12:-1])
         return list_output
     else:
         return False
+
