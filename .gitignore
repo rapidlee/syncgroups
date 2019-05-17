@@ -1,0 +1,6 @@
+jenv/
+.DS_Store
+.vscode/
+__pycache__
+open_grok.txt
+test.py
