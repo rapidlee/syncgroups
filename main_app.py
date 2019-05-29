@@ -1,6 +1,6 @@
 # pylot - Johnny Lee
 from flask import Flask, render_template, request
-from testapp import test_domain_input, find_pattern
+from testapp import test_domain_input, find_pattern, find_dept
 app = Flask(__name__)
 
 
@@ -15,7 +15,8 @@ def my_form_post():
     text = request.form['some_input']
     final_input = test_domain_input(text)
     final_output = find_pattern(final_input)
-    return render_template('my-form-processed.html', final_output=final_output, final_input=final_input)
+    dept_output = find_dept(final_input)
+    return render_template('my-form-processed.html', final_output=final_output, final_input=final_input, dept_output=dept_output)
 
 if __name__ == "__main__":
       app.run(host='0.0.0.0', port=5005, debug=True)

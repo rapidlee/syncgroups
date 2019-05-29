@@ -1,17 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
         <!-- Test if there is a value for final_input -->
-        {% if final_output == "nothing" %}
-            <b> {{ final_input }} </b> is a sync group<br><br><br>
-            <!-- WE are going to add something here to handle departments -->
-            Please refer to our <a href="https://sourcegraph.yelpcorp.com/ITOnboarding/-/blob/GroupSyncronization/GoogleGroups.cfg">Sourcegraph</a> for more info on restricted AD groups<br><br>
-        {% elif final_output %}
+        {% if final_output %}
             <b> {{ final_input }} </b> is a sync group<br><br><br>
             <!-- WE are going to add something here to handle departments -->
             Below are the restricted groups in AD: <br><br>
             {% for items in final_output %}
                 {{ items }} <br>
             {% endfor %}
+            <!-- Check to see if there are departments listed under the syncgroups -->
+            {% if dept_output %}
+                <br><br>
+                <font color='red'><b>Proceed with caution!</b></font> <br>Users should be in the following departments before adding the restricted groups.<br>
+                Please obtain proper approvals before doing so!<br><br>
+                {% for items in dept_output %}
+                    {{ items }}<br>
+                {% endfor %}
+            {% endif %}
         {% else %}
             {{ final_input }} is not a sync group
         {% endif %}
