@@ -11,7 +11,7 @@
             <!-- Check to see if there are departments listed under the syncgroups -->
             {% if dept_output %}
                 <br><br>
-                <font color='red'><b>Proceed with caution!</b></font> <br>Users should be in the following departments before adding the restricted groups.<br>
+                <font color='red'><b>Proceed with caution!</b></font> <br>Users should be in at least one of the following departments before adding the restricted groups.<br>
                 Please obtain proper approvals before doing so!<br><br>
                 {% for items in dept_output %}
                     {{ items }}<br>
