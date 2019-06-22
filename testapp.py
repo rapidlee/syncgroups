@@ -1,11 +1,13 @@
+
+
 import re
+import os
+from datetime import datetime
 
 # Read the OpenGrok file and save it to var f
 with open('open_grok.txt', 'r') as f:
     # print(f'The filename you are searching from is: {f.name}')
     file_contents = f.read()
-
-
     
 # Test input for @yelp domain or @ sign, if not then add the @yelp domain to the input
 def test_domain_input(original_input):
@@ -57,5 +59,10 @@ def find_dept(final_input):
             dept_list_output.append(match[11:-1])
         return dept_list_output
 
-temp_list = find_dept("nationalmm")
-print(temp_list)
+# Get the last modified date of open_grok file
+def get_file_lastmod_date():
+    # last_updated = os.stat('open_grok.txt').st_mtime
+    a = os.path.getmtime('open_grok.txt')
+    b = datetime.fromtimestamp(a)
+    last_modified = str(b)
+    return last_modified[:10]

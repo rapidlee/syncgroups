@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2 align="center">Update the Source File</h2>    
+        <div class="body-container" align="center"> 
+            Copy and paste entire contents of the source below:
+            <p></p>
+            <form method="POST">
+                <textarea style="white-space: nowrap; overflow: scroll;" name="file_contents" cols="100" rows="30"></textarea><br><br>
+                <input type="submit" value="Submit new source content">
+            </form>
+        </div>
+{% endblock content %}
